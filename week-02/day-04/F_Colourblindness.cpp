@@ -13,19 +13,19 @@ int main()
     {
         int n;
         cin >> n;
-        string row1, row2;
-        cin >> row1 >> row2;
+        string str1, str2;
+        cin >> str1 >> str2;
 
         bool identical = true;
 
         for (int i = 0; i < n; i++)
         {
-            if (row1[i] == 'R' && row2[i] != 'R')
+            if (str1[i] == 'R' && str2[i] != 'R')
             {
                 identical = false;
                 break;
             }
-            if ((row1[i] == 'G' || row1[i] == 'B') && (row2[i] != 'G' && row2[i] != 'B'))
+            if ((str1[i] == 'G' || str1[i] == 'B') && (str2[i] != 'G' && str2[i] != 'B'))
             {
                 identical = false;
                 break;
