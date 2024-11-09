@@ -1,7 +1,6 @@
 // Problem link: https://codeforces.com/problemset/problem/1790/D
 
 #include <bits/stdc++.h>
-#define ll long long
 using namespace std;
 int main()
 {
@@ -13,44 +12,33 @@ int main()
     cin >> t;
     while (t--)
     {
-        ll n, num, ans = 0, i;
+        int n;
         cin >> n;
-        map<ll, ll> m1;
+        int arr[n + 5];
+        map<int, int> mp;
 
-        while (n--)
+        for (int i = 1; i <= n; i++)
         {
-            cin >> num;
-            m1[num]++;
+            cin >> arr[i];
+            mp[arr[i]]++;
         }
 
-        vector<pair<ll, ll>> v1;
+        sort(arr + 1, arr + n + 1);
+        int ans = 0;
 
-        for (auto it : m1)
+        for (int i = 1; i <= n; i++)
         {
-            v1.push_back({it.first, it.second});
-        }
-
-        ll t1 = v1[0].first, t2 = v1[0].second;
-        n = v1.size();
-
-        for (i = 1; i < n; i++)
-        {
-            if (v1[i].first == t1 + 1)
+            int val = arr[i];
+            if (mp[arr[i]] != 0)
             {
-                if (t2 > v1[i].second)
+                ans++;
+                while (mp[val] > 0)
                 {
-                    ans += (t2 - v1[i].second);
+                    mp[val]--;
+                    val++;
                 }
             }
-            else
-            {
-                ans += t2;
-            }
-            t1 = v1[i].first;
-            t2 = v1[i].second;
         }
-
-        ans += t2;
         cout << ans << endl;
     }
     return 0;
